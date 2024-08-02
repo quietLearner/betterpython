@@ -6,7 +6,7 @@ from typing import List, Callable
 
 def generate_id(length: int = 8) -> str:
     # helper function for generating an id
-    return ''.join(random.choices(string.ascii_uppercase, k=length))
+    return "".join(random.choices(string.ascii_uppercase, k=length))
 
 
 @dataclass
@@ -16,8 +16,11 @@ class SupportTicket:
     issue: str
 
 
+# new data type for holding a list of support tickets
 SupportTickets = List[SupportTicket]
 
+# new data type for holding an ordering function
+# [SupportTickets] is inputs, SupportTickets is output
 Ordering = Callable[[SupportTickets], SupportTickets]
 
 
@@ -37,6 +40,7 @@ def random_ordering(list: SupportTickets) -> SupportTickets:
     return list_copy
 
 
+# what is _?
 def blackhole_ordering(_: SupportTickets) -> SupportTickets:
     return []
 
@@ -76,14 +80,12 @@ def main() -> None:
 
     # register a few tickets
     app.create_ticket("John Smith", "My computer makes strange sounds!")
-    app.create_ticket("Linus Sebastian",
-                      "I can't upload any videos, please help.")
-    app.create_ticket(
-        "Arjan Egges", "VSCode doesn't automatically solve my bugs.")
+    app.create_ticket("Linus Sebastian", "I can't upload any videos, please help.")
+    app.create_ticket("Arjan Egges", "VSCode doesn't automatically solve my bugs.")
 
     # process the tickets
     app.process_tickets(random_ordering)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

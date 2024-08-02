@@ -5,7 +5,7 @@ from typing import List
 
 def generate_id(length=8):
     # helper function for generating an id
-    return ''.join(random.choices(string.ascii_uppercase, k=length))
+    return "".join(random.choices(string.ascii_uppercase, k=length))
 
 
 class SupportTicket:
@@ -52,7 +52,7 @@ class CustomerSupport:
 
 
 # create the application
-app = CustomerSupport("filo")
+app = CustomerSupport("fifo")
 
 # register a few tickets
 app.create_ticket("John Smith", "My computer makes strange sounds!")
